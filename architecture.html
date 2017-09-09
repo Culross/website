@@ -37,7 +37,7 @@
             <a href="/"><img src="/assets/img/blockade.png" width="25%"></a>
             <p></p>
             <h1>Blockade</h1>
-            <p>Blockade brings antivirus-like capabilities to users who run the Chrome browser. Built as an extension, Blockade blocks malicious resources from being viewed or loaded inside of the browser.</p>
+            <p>Blockade brings antivirus-like abilities to Chrome users. Built as an extension, Blockade blocks malicious resources from being viewed or loading in the browser.</p>
             <a class="github-button" href="https://github.com/blockadeio/chrome_extension/archive/master.zip" data-icon="octicon-cloud-download" data-style="mega" aria-label="Download 9b/blockade on GitHub">Download</a>
             <a class="github-button" href="https://github.com/blockadeio/chrome_extension" data-icon="octicon-star" data-style="mega" data-count-href="/9b/blockade/stargazers" data-count-api="/repos/9b/blockade#stargazers_count" data-count-aria-label="# stargazers on GitHub" aria-label="Star 9b/blockade on GitHub">Star</a>
             <a class="github-button" href="https://github.com/blockadeio/chrome_extension/fork" data-icon="octicon-repo-forked" data-style="mega" data-count-href="/9b/blockade/network" data-count-api="/repos/9b/blockade#forks_count" data-count-aria-label="# forks on GitHub" aria-label="Fork 9b/blockade on GitHub">Fork</a>
@@ -57,7 +57,7 @@
             <p>
                 <a href="https://raw.githubusercontent.com/blockadeio/chrome_extension/master/screenshots/blockade-architecture.png"><img src="https://raw.githubusercontent.com/blockadeio/chrome_extension/master/screenshots/blockade-architecture.png" /></a>
             </p>
-            <p>Blockade is split into two pieces, cloud infrastructure and the local Chrome Extension. Intelligence is passed from the cloud infrastructure directly into the browser’s local storage. Using special APIs available to extensions, Blockade will look for any web request matching a known indicator and block it from being loaded. Malicious events from Blockade are passed to the cloud infrastructure where analysts can review the findings and surface more attacks.</p>
+            <p>Blockade is split into two pieces, cloud infrastructure and the local Chrome Extension. Intelligence passes from the cloud infrastructure directly into the browser’s local storage. Using special APIs available to extensions, Blockade looks for any web request matching a known indicator and blocks it from being loaded. Blockade passes malicious events to the cloud. In the cloud, analysts can review the findings and surface more attacks.</p>
             <h1 id="cloud-nodecloud-node"><a href="#cloud-node"></a>Cloud Node</h1>
             <p>
                 <a href="https://raw.githubusercontent.com/blockadeio/chrome_extension/master/screenshots/aws-architecture.png"><img src="https://raw.githubusercontent.com/blockadeio/chrome_extension/master/screenshots/aws-architecture.png" /></a>
@@ -88,8 +88,8 @@
 </span></code></pre>
             </div>
             <h1 id="chrome-extensionchrome-extension"><a href="#chrome-extension"></a>Chrome Extension</h1>
-            <p>Blockade uses a Chrome Extension to perform blocking inside of the browser. Hashed intelligence* from the cloud node is sent down to the browser and stored inside of local storage. In order to inspect web traffic, Blockade uses the <a href="https://developer.chrome.com/extensions/webRequest"><code class="highlighter-rouge">chrome.webRequest</code></a> APIs and places a hook on <a href="https://developer.chrome.com/extensions/webRequest#event-onBeforeRequest"><code class="highlighter-rouge">onBeforeRequest</code></a>, so that all web requests are analyzed prior to leaving the browser.</p>
-            <p>If Blockade identifies a malicious web request, an event will be generated and stored inside of a <code class="highlighter-rouge">events</code> section within local storage. Events contain all the details of the request with some additional properties about the browser itself. On a regular schedule, events will get synced to the cloud node in order for analysts to process the events.</p>
+            <p>Blockade uses a Chrome Extension to perform blocking in the browser. The cloud node sends hashed intelligence* down to the browser and stores it in the local storage. To inspect web traffic, Blockade uses the <a href="https://developer.chrome.com/extensions/webRequest"><code class="highlighter-rouge">chrome.webRequest</code></a> APIs and places a hook on <a href="https://developer.chrome.com/extensions/webRequest#event-onBeforeRequest"><code class="highlighter-rouge">onBeforeRequest</code></a>. This makes sure all web requests are analyzed prior to leaving the browser.</p>
+            <p>When Blockade identifies a malicious web request, it generates and stores an event in an <code class="highlighter-rouge">events</code> section in local storage. An event contains the details of the request and some browser properties. Events sync to the cloud node on a regular schedule for analysts to process and review.</p>
             <p><sub>
 <em>* Indicators are hashed using MD5. While not secure, this algorithm greatly reduces the key size and allows us to store well over a million indicators inside of local storage.</em>
 </sub></p>
